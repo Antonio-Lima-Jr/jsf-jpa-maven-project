@@ -15,4 +15,16 @@ public class DaoGeneric<T> {
 		entityTransaction.commit();
 		entityManager.close();
 	}
+	
+
+	public T merge(T entidade) {
+		EntityManager entityManager = HibernateUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		T entityMerged = entityManager.merge(entidade);
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return entityMerged;
+	}
 }

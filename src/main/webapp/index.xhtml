@@ -12,6 +12,10 @@
 <h:body>
 
 	<h:form id="formPessoa">
+		<h:outputLabel value="Id: "></h:outputLabel>
+		<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true"/>
+		<br />
+	
 		<h:outputLabel value="Nome: "></h:outputLabel>
 		<h:inputText value="#{pessoaBean.pessoa.nome}" />
 		<br />
