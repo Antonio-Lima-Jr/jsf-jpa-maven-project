@@ -1,48 +1,29 @@
 package br.com.antonio;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
+
+import br.com.antonio.entity.dao.DaoGeneric;
+import br.com.antonio.entity.model.Pessoa;
 
 @ManagedBean(name = "pessoaBean")
-@ViewScoped
+@RequestScoped
 public class PessoaBean {
 
-	private List<String> listName = new ArrayList<>();
+	Pessoa pessoa = new Pessoa();
 
-	private String nome;
-	private String senha;
+	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 
-	public String addNome() {
-		listName.add(nome);
-		return "";
+	public void salvar() {
+		daoGeneric.salvar(pessoa);
 	}
 
-	public String getNome() {
-		return nome;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public List<String> getListName() {
-		return listName;
-	}
-
-	public void setListName(List<String> listName) {
-		this.listName = listName;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 }
